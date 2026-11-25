@@ -1,0 +1,272 @@
+/* =====================================================================
+   TOKENS · todo el look sale de acá. Los temas (src/themes/*.js) pisan
+   estas variables en <html>; el admin nunca las pisa (siempre "normal").
+   ===================================================================== */
+:root {
+  /* Paleta por defecto: crema cálido + amarillo sol + rojo cereza + azul marino */
+  --c-bg: #fff8ec;
+  --c-surface: #ffffff;
+  --c-surface-2: #fff0d2;
+  --c-ink: #1e2a52;
+  --c-ink-soft: #5a6486;
+  --c-line: #f1e2c3;
+  --c-primary: #d81e37; /* cereza: botones y precios */
+  --c-primary-ink: #ffffff;
+  --c-accent: #ffc52e; /* sol: etiquetas, resaltados */
+  --c-accent-ink: #3a2a00;
+  --c-price: #d81e37;
+  --c-hero-from: #ffe9a8;
+  --c-hero-to: #fff8ec;
+  --c-ticker-bg: #1e2a52;
+  --c-ticker-ink: #fff8ec;
+  --c-ok: #1f8a4c;
+  --c-danger: #b3261e;
+  --c-whatsapp: #1c8f4e;
+
+  /* Forma (lenguaje DESIGN.md: radios grandes, píldoras, sin sombras pesadas) */
+  --r-card: 24px;
+  --r-md: 16px;
+  --r-sm: 12px;
+  --r-pill: 999px;
+  --shadow-1: 0 0 0 1px var(--c-line);
+  --shadow-lift: 0 10px 30px rgba(30, 42, 82, 0.14);
+
+  /* Tipografía */
+  --font-display: 'Fredoka', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --track-tight: -0.02em;
+
+  /* Movimiento */
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --header-h: 60px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: var(--track-tight);
+}
+p {
+  margin: 0;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+a {
+  color: inherit;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+}
+:focus-visible {
+  outline: 3px solid var(--c-primary);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.container {
+  width: min(1180px, 100% - 1.5rem);
+  margin-inline: auto;
+}
+
+/* ---------- Botones (píldora) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.25rem;
+  min-height: 44px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid transparent;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  background: var(--c-surface);
+  color: var(--c-ink);
+  transition: transform 0.18s var(--ease-pop), background 0.18s ease, color 0.18s ease,
+    border-color 0.18s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn-primary {
+  background: var(--c-primary);
+  color: var(--c-primary-ink);
+}
+.btn-primary:hover {
+  filter: brightness(0.92);
+}
+.btn-accent {
+  background: var(--c-accent);
+  color: var(--c-accent-ink);
+}
+.btn-ghost {
+  border-color: var(--c-line);
+  background: var(--c-surface);
+  color: var(--c-ink);
+}
+.btn-ghost:hover {
+  background: var(--c-surface-2);
+}
+.btn-danger {
+  border-color: #f1c5c1;
+  color: var(--c-danger);
+  background: var(--c-surface);
+}
+.btn-danger:hover {
+  background: #fdeceb;
+}
+.btn-whatsapp {
+  background: var(--c-whatsapp);
+  color: #fff;
+}
+.btn-whatsapp:hover {
+  filter: brightness(0.9);
+}
+.btn-sm {
+  padding: 0.4rem 0.9rem;
+  min-height: 36px;
+  font-size: 0.85rem;
+}
+.btn-block {
+  width: 100%;
+}
+
+/* ---------- Formularios (16px: sin zoom en iOS) ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.field > label,
+.label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.hint {
+  color: var(--c-ink-soft);
+  font-size: 0.82rem;
+}
+.error-text {
+  color: var(--c-danger);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+.input {
+  width: 100%;
+  min-height: 46px;
+  padding: 0.65rem 0.95rem;
+  font-size: 16px;
+  border-radius: var(--r-md);
+  border: 1.5px solid var(--c-line);
+  background: var(--c-surface);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--c-primary) 16%, transparent);
+}
+.input[aria-invalid='true'] {
+  border-color: var(--c-danger);
+}
+textarea.input {
+  resize: vertical;
+  min-height: 96px;
+}
+
+/* ---------- Toasts ---------- */
+.toast-region {
+  position: fixed;
+  left: 50%;
+  bottom: 5.5rem;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 200;
+  width: min(420px, 100% - 2rem);
+  pointer-events: none;
+}
+.toast {
+  padding: 0.8rem 1.1rem;
+  border-radius: var(--r-md);
+  background: var(--c-ink);
+  color: var(--c-bg);
+  font-weight: 500;
+  box-shadow: var(--shadow-lift);
+}
+.toast-success {
+  background: var(--c-ok);
+  color: #fff;
+}
+.toast-error {
+  background: var(--c-danger);
+  color: #fff;
+}
+
+/* ---------- Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Impresión (cartelito del QR) ---------- */
+@media print {
+  body * { visibility: hidden; }
+  .print-area, .print-area * { visibility: visible; }
+  .print-area { position: absolute; left: 0; top: 0; width: 100%; }
+}
